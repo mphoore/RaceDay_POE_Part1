@@ -13,7 +13,7 @@ permissions:
 
 
 jobs:
-  check strucrture:
+  check_structure:
     name: Check Repository Structure
     runs-on: ubuntu-latest
 
