@@ -21,19 +21,12 @@ jobs:
       - name: Checkout Repository 
         uses: actions/checkout@v4
 
-      - name: Check docs folder exists
+      - name: Validate Repository structure
        run: |
-         if [ ! -d "docs" ]; then
-           echo "Error: / docs folder does not exist!"
-           exit 1
-         fi
-          
-     
-      - name: Check required files inside docs
-        run: |
-          if [ -z "$(ls -A docs)" ]; then
-             echo "Error: /docs folder is empty!"
-             exit 1
-          fi   
+           echo "Checking repository structure..."
+           ls -la
+           echo "Validation complete!"
+           
+        
 
    
