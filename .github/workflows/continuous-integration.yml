@@ -1,1 +1,43 @@
+name: Continuous Integration
+
+# 1. Define when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 2. Grant permissions required to run the workflow
+permissions:
+  contents: read
+
+# 3. Define the jobs to execute
+jobs:
+  build-and-test:
+    name: Build and Test Application
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download the repository code onto the GitHub runner
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up the language environment (Node.js example)
+      - name: Set up Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm' # Automates dependency caching for faster builds
+
+      # Step 3: Install dependencies cleanly based on your lockfile
+      - name: Install Dependencies
+        run: npm ci
+
+      # Step 4: Check code formatting/linting (optional but recommended)
+      - name: Check Code Quality (Lint)
+        run: npm run lint --if-present
+
+      # Step 5: Run your automated test suite
+      - name: Run Test Suite
+        run: npm test
 
