@@ -22,8 +22,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate Repository structure
-       run: |
-           echo "Checking repository structure..."
+        run: |
+          echo "Checking repository structure..."
            ls -la
            echo "Validation complete!"
            
